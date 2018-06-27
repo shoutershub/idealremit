@@ -678,7 +678,7 @@ button{
     z-index: 15;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: left;
+    -ms-flex-pack: initial;
     justify-content: left;
     padding-left: 0;
     margin-right: 0;
@@ -876,6 +876,7 @@ button{
 * user profile info on sidebar
 */
 
+
 .ideal-remit-user-profile {
     background-color: #f0f0f0;
 }
@@ -986,6 +987,19 @@ button{
 	border-top-right-radius: 3px;
 }
 
+.user-profile-reloaded i {
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+.acount-info-drip a i{
+    padding-right: 5px;
+}
+.acount-info-drip a:hover {
+    border: 0;
+    padding-bottom: 0;
+    background: #dedede;
+}
 
 .ideal-remit-search-btn-history {
     position: absolute;
@@ -1334,6 +1348,55 @@ background: url('../img/dark-denim-3.png') #0288D1;
     color: #3498db;
 }
 
+/*Edit User Profile Settings Page*/
+.profile-settings .form-control {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.header-handle-toggle.relative {
+    padding: 10px;
+    background: #e3e3e3;
+    border-radius: 3px;
+}
+
+.change-pword-filed {
+    display: none;
+    padding: 20px 0;
+}
+.Toggle-change-password {
+    width: 100%;
+    background: #f0f0f0;
+    cursor: pointer;
+    margin: 8px 15px 20px;
+}
+
+.header-handle-toggle i {
+    position: absolute;
+    top: 34%;
+    right: 15px;
+}
+
+.Toggle-change-password h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.edit-profile-image-inner.img-is-responsive-2 img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100px;
+    border: 4px solid #e8e8e8;
+    text-align: center;
+}
+
+.edit-profile-image-inner.img-is-responsive-2 {
+    text-align: center;
+}
+
+
 /*End Footer*/
 
 
@@ -1508,6 +1571,11 @@ background: url('../img/dark-denim-3.png') #0288D1;
 		padding-left: 25px;
 	}
 
+    .change-pword-filed {
+        padding: 50px;
+    }
+
+
 }
 
 @media only screen and (min-width: 768px){
@@ -1636,6 +1704,63 @@ background: url('../img/dark-denim-3.png') #0288D1;
 		margin-top: -10px;
 		margin: -10px auto 0 auto;
 	}
+
+    .acount-info-drip a {
+
+        display: block !important;
+        color: #444;
+        text-align: left;
+
+    }
+
+    .acount-info-drip {
+
+        width: 170px;
+        background: #fff;
+        position: absolute;
+        right: 130px;
+        padding: 4px 0;
+        font-size: 15px;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+        border-color: #eff3f6;
+        top: 30px;
+        border-radius: 3px;
+        z-index: 10;
+        display: none;
+    }
+
+    .user-profile-reloaded:hover {
+        border: 0 !important;
+    }
+
+    .acount-info-drip a {
+        line-height: 2.5;
+    }
+
+    .user-profile-reloaded a {
+        display: block;
+    }
+    .user-profile-reloaded img {
+        width: 30px;
+    }
+
+    .user-profile-reloaded{
+        position: relative;
+    }
+
+    .acount-info-drip::before {
+
+        content: "\f0de";
+        font-family: 'FontAwesome';
+        font-style: normal;
+        font-weight: 900;
+        color: #fff;
+        top: -15px;
+        position: absolute;
+        left: 47%;
+        font-size: 25px;
+
+    }
 
 	.user-logged-in-p-image .logged-in-status-name {
 		white-space: nowrap;

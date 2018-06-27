@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ app()->getLocale() }}"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="{{ app()->getLocale() }}"> <![endif]-->
@@ -51,7 +50,7 @@
         </div>
 
         <div class="ideal-remit-mobile-nav-2">
-            <a href="#"><i class="fas fa-power-off"></i>Logout</a>
+            <a href="{{ route('logout') }}"><i class="fas fa-power-off"></i>Logout</a>
         </div>
     </div>
     <div class="starting-mobile-menu">
@@ -107,7 +106,7 @@
 
                     <div class="ideal-remit-menu-3">
                         <a href="#">Help</a>
-                        <a href="#">Login</a>
+                        <a href="{{route('login')}}">Login</a>
                     </div>
 
                     <!--
