@@ -9,6 +9,7 @@
     <title>IdealRemit - Easy money flow</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{--<link href="https://fonts.googleapis.com/css?family=Raleway:400,700|Work+Sans:400,700" rel="stylesheet">--}}
 
     <!-- Link Bootstrap 4 style and Custom style -->

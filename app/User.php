@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'phone', 'password', 'verified',
+        'firstname', 'lastname', 'email', 'phone', 'password', 'verified', 'sex',
     ];
 
     /**
@@ -42,6 +42,16 @@ class User extends Authenticatable
     public function state()
     {
         return $this->hasOne(State::class);
+    }
+
+    public function address()
+    {
+        return $this->hasOne('App\Address');
+    }
+
+    public function bankinformation()
+    {
+        return $this->hasOne(BankInfomartion::class);
     }
 
     public function hasVerifiedEmail()

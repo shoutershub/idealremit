@@ -28,6 +28,6 @@ class SendVerificationEmail
      */
     public function handle($event)
     {
-        Mail::to($event->user)->send(new SendVerificationToken($event->user->verificationToken));
+        //Mail::to($event->user)->send(new SendVerificationToken($event->user->verificationToken));
     }
 }
