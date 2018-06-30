@@ -25,6 +25,7 @@ class ChangePasswordController extends Controller
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function ChangePassword(Request $request){
+
         if($request->method() == "POST")
         {
             try{
@@ -67,9 +68,11 @@ class ChangePasswordController extends Controller
                 return response()->json(['errors'=>'Old Password entered does not match any of our records']);
             }
         }
-        else if($request->method() == "GET")
+        else
         {
-            return redirect('404');
+
+            return redirect('account/edit-profile');
+
         }
 
     }

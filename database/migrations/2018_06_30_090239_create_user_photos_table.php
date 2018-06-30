@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeofileImagesTable extends Migration
+class CreateUserPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreatePeofileImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('peofile_images', function (Blueprint $table) {
+        Schema::create('user_photos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->index()->unsigned();
+            $table->text('path');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,6 +30,6 @@ class CreatePeofileImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peofile_images');
+        Schema::dropIfExists('user_photos');
     }
 }

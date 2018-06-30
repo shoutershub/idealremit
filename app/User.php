@@ -54,6 +54,9 @@ class User extends Authenticatable
         return $this->hasOne(BankInfomartion::class);
     }
 
+    public function photo(){
+        return $this->hasOne('App\UserPhoto');
+    }
     public function hasVerifiedEmail()
     {
         return $this->verified;

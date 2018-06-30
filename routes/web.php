@@ -21,3 +21,5 @@ Route::get('/verify/resend', 'Auth\VerificationController@resend')->name('auth.v
 Route::get('/logout', 'Auth\loginController@logout')->name('logout');
 
 Route::post('/account/change-password', 'ChangePasswordController@ChangePassword')->name('change-password');
+Route::get('/account/change-password', 'ChangePasswordController@ChangePassword')->name('change-password');
+Route::Post('/account/change-bank-info', 'BankAccountController@store')->name('change-bank-info');

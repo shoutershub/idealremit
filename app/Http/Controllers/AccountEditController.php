@@ -5,20 +5,32 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\BankInfomartion;
 use App\User;
+use App\UserPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 use Mockery\Exception;
 
 class AccountEditController extends Controller
 {
-    //
 
-/*    public function show(){
+
+    /* public function show(){
         return view('account.edit');
     }*/
+
+    private $photos_path;
+
+    public function __construct()
+    {
+        $this->photos_path = public_path('/images');
+    }
+
+
+
 
     public function index(){
 
@@ -36,6 +48,60 @@ class AccountEditController extends Controller
 
     public function store(Request $request){
         $input = $request->all();
+
+        $file = $request->file('file');
+        if(!$file == NULL) {
+            if(UserPhoto::where('user_id', Auth::user()->id)->exists() === false) {
+                if (!is_dir($this->photos_path)) {
+                    mkdir($this->photos_path, 0777);
+                }
+
+
+                $name = sha1(date('YmdHis') . str_random(20));
+                $resize_name = $name . str_random(16) . '-by-' . Auth::user()->firstname . Auth::user()->lastname .'.'. $file->getClientOriginalExtension();
+
+
+                Image::make($file)
+                    ->resize(100, 100, function ($constraints) {
+                        $constraints->aspectRatio();
+                    })
+                    ->save($this->photos_path . '/' . $resize_name);
+
+
+                (new UserPhoto)->create([
+                    'path' => $resize_name,
+                    'user_id' => Auth::user()->id,
+                ]);
+
+            }elseif(UserPhoto::where('user_id', Auth::user()->id)->exists()) {
+                unlink(public_path().'/images/'.Auth::user()->photo->path);
+                if (!is_dir($this->photos_path)) {
+                    mkdir($this->photos_path, 0777);
+                }
+
+
+                $name = sha1(date('YmdHis') . str_random(20));
+                $resize_name = $name . str_random(16) . '-by-' . Auth::user()->firstname . Auth::user()->lastname .'.'. $file->getClientOriginalExtension();
+
+
+                Image::make($file)
+                    ->resize(100, 100, function ($constraints) {
+                        $constraints->aspectRatio();
+                    })
+                    ->save($this->photos_path . '/' . $resize_name);
+
+
+                UserPhoto::where('user_id', Auth::user()->id)->update([
+                    'path' => $resize_name,
+                    'user_id' => Auth::user()->id,
+                ]);
+
+            }
+
+
+
+        }
+
         $id = Auth::user()->id;
 
         $rules = [
