@@ -23,3 +23,18 @@ Route::get('/logout', 'Auth\loginController@logout')->name('logout');
 Route::post('/account/change-password', 'ChangePasswordController@ChangePassword')->name('change-password');
 Route::get('/account/change-password', 'ChangePasswordController@ChangePassword')->name('change-password');
 Route::Post('/account/change-bank-info', 'BankAccountController@store')->name('change-bank-info');
+
+
+Route::get('/account/send-money', 'SendMoney@index')->name('sendmoney');
+
+/*Admin Routes*/
+
+Route::get('/admin', function (){
+    $users = User::all();
+    return view('admin.index', compact('users'));
+})->name('admin-controller');
+
+
+Route::resource('/admin/users', 'AdminUsersController', ['name' => 'admin-controller']);
+Route::post('/admin/users/change-password', 'AdminUsersController@changepassword', ['name' => 'admin-change-password']);
+Route::get('/admin/users/change-password', 'AdminUsersController@changepassword', ['name' => 'admin-change-password']);

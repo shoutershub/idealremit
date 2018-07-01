@@ -74,7 +74,11 @@ class AccountEditController extends Controller
                 ]);
 
             }elseif(UserPhoto::where('user_id', Auth::user()->id)->exists()) {
-                unlink(public_path().'/images/'.Auth::user()->photo->path);
+                if(file_exists(public_path().'/images/'.Auth::user()->photo->path)){
+                    unlink(public_path().'/images/'.Auth::user()->photo->path);
+                }
+
+
                 if (!is_dir($this->photos_path)) {
                     mkdir($this->photos_path, 0777);
                 }

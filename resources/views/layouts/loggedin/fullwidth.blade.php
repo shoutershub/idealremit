@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{--<link href="https://fonts.googleapis.com/css?family=Raleway:400,700|Work+Sans:400,700" rel="stylesheet">--}}
+{{--<link href="https://fonts.googleapis.com/css?family=Raleway:400,700|Work+Sans:400,700" rel="stylesheet">--}}
 
-    <!-- Link Bootstrap 4 style and Custom style -->
+<!-- Link Bootstrap 4 style and Custom style -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('fonts/css/fontawesome-all.css')}}" rel="stylesheet">
     <link href="{{asset('css/idealremit.css')}}" rel="stylesheet">
@@ -31,7 +31,7 @@
             <a href="#" class="mobile-login-up-btn">Login</a>
         </div>
         <div class="ideal-remit-mobile-menu-nav img-is-responsive">
-            <a href="#"><img src="{{Auth::user()->photo ? public_path().'/images/'.Auth::user()->photo->path: public_path().'assets/img/medium-default-avatar.png'}}"></a>
+            <a href="#"><img src="assets/img/medium-default-avatar.png"></a>
             <p>Logged in as: </p>
             <button class="logged-in-status-name-nav">Neon Emmanuel</button>
         </div>
@@ -74,10 +74,10 @@
                     </div>
                     <div class="col-2 col-sm-2">
 
-                        	<div class="ideal-remit-mobile-menu-third img-is-responsive">
-                                <a href="#"><img src="{{Auth::user()->photo ? '/images/'.Auth::user()->photo->path: url('img/default-avatar.png')}}"></a>
-                                <span class="logged-in-status-name">Neon Emmanuel</span>
-                            </div>
+                        <div class="ideal-remit-mobile-menu-third img-is-responsive">
+                            <a href="#"><img src="{{Auth::user()->photo ? '/images/'.Auth::user()->photo->path: url('img/default-avatar.png')}}"></a>
+                            <span class="logged-in-status-name">Neon Emmanuel</span>
+                        </div>
 
                     </div>
                 </div>
@@ -101,17 +101,17 @@
                         <a href="#" class="user-profile-reloaded">
                             <img src="{{Auth::user()->photo ? '/images/'.Auth::user()->photo->path: url('img/default-avatar.png')}}">
                             {!! usernamereloaded(Auth::user()->firstname, Auth::user()->lastname) !!}
-                             <i class="fa fa-angle-down"></i>
+                            <i class="fa fa-angle-down"></i>
                             <div class="acount-info-drip">
                                 <a href="#"><i class="fas fa-envelope-open"></i> Tickets</a>
                                 <a href="{{url('account/edit-profile')}}"><i class="fas fa-user-cog"></i>Edit Account</a>
                                 <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Log out</a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
                         </a>
                     </div>
@@ -121,56 +121,23 @@
     </div>
 </div>
 
-
-
-<!-- idealremit user profile starts Here-->
-
+<!-- Full Width Page Starts Here-->
 <div class="ideal-remit-user-profile">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="white-backgroud ideal-remit-user-profile-action-2 box-shadow clearfix">
-                    <div class="clearfix">
-                        <p class="cursor-pointer relative" data-toggle="collapse" data-target="#edit-profile">Profile </p>
-                        <div class="toggle-content" id="edit-profile" class="collapse show">
-                            <div class="profile-action-reloaded">
-                                <a href="{{url('account/edit-profile')}}">Edit profile infomation</a>
-                            </div>
-                            <div class="profile-action-reloaded">
-                                <a href="#">Currency</a>
-                            </div>
-                            <div class="profile-action-reloaded">
-                                <a href="#">Surport tickets <span class="badge badge-success float-right">20</span></a>
-                            </div>
-                            <div class="current-country"><p>Your current country currecny: Nigeria <a href="#">change</a></p></div>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+                <div class="white-backgroud box-shadow ideal-remit-user-profile-histroy">
+
+                    @yield('content')
+
                 </div>
 
-                <div class="white-backgroud ideal-remit-user-profile-action-2 box-shadow clearfix">
-                    <div class="clearfix">
-                        <p class="cursor-pointer relative" data-toggle="collapse" data-target="#generate-invoce">Invoicing </p>
-                        <div class="toggle-content" id="generate-invoce" class="collapse show">
-                            <div class="create-invoce-inner">
-                                <p>Create and send custom invoices. Your customers can pay you online using their cards or PayPal account.</p>
-                                <button>Generate invoice</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="white-backgroud box-shadow ideal-remit-user-profile-histroy">
-                    <div class="cotnet-goes here">
-                        @yield('content')
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
-
-<!-- idealremit User profile form ends here -->
+<!-- idealremit Send money page page ends here -->
 
 <div class="ideal-remit-footer">
     <div class="container">

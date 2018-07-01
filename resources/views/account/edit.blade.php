@@ -1,10 +1,13 @@
+
 @extends('layouts.loggedin.defualt')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
 @endsection
 
 @section('content')
+
     <div class="profile-settings">
         <div class="intro-heading-left text-left">
             <h2>Edit Profile Information </h2>
@@ -29,7 +32,8 @@
                     <div class="col-md-12 edit-profile-image-reloaded">
 
                         <div class="edit-profile-image-inner img-is-responsive-2">
-                            <img src="{{url('img/medium-default-avatar.png')}}">
+
+                            <img src="{{Auth::user()->photo ? '/images/'.Auth::user()->photo->path: url('img/default-avatar.png')}}">
                         </div>
                         <div class="form-group">
                             <label>Select Profile Image</label>
@@ -52,19 +56,16 @@
                         <label for="first-name">Gender</label> <br/>
                         <select name="sex" class="form-control">
                             @if($user->sex)
-                            @if($user->sex == 'Male')
-
-                            <option value="{{$user->sex}}">{{$user->sex}}</option>
-                            <option value="Female">Change to: Female</option>
+                                @if($user->sex == 'Male')
+                                    <option value="{{$user->sex}}">{{$user->sex}}</option>
+                                    <option value="Female">Change to: Female</option>
                                 @elseif($user->sex == 'Female')
-
-                                <option value="{{$user->sex}}">{{$user->sex}}</option>
-                                <option value="Male">Change to: Male</option>
-
-                                @else
+                                    <option value="{{$user->sex}}">{{$user->sex}}</option>
+                                    <option value="Male">Change to: Male</option>
+                                @endif
+                            @else
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                            @endif
                             @endif
                         </select>
                     </div>

@@ -881,6 +881,26 @@ button{
     background-color: #f0f0f0;
 }
 
+.user-profile-reloaded img {
+    border-radius: 100px;
+}
+
+.more-action {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-weight: 500;
+    background: #444;
+    color: #fff;
+}
+.user-profile-image img {
+    width: 30px;
+    border-radius: 100px;
+}
+
+
 .ideal-remit-mobile-menu-nav.img-is-responsive {
     margin-top: 30px;
 }
