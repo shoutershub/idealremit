@@ -1106,8 +1106,30 @@ select.input-sm {
 	margin-bottom: 10px;
 }
 
+.form-group.has-error .help-block {
+    color: #e74c3c;
+}
+
+
+.form-group.has-error .surport-input.form-control {
+    border: 2px solid #e74c3c !important;
+}
+
+.form-group.support_type select {
+    border: 2px solid red !important;
+}
+
+.form-group.support_type .help-block {
+    color: #e74c3c;
+}
+
 .ideal-surport {
     border-radius: 3px;
+}
+
+.surport-input{
+    border-radius: 0;
+    border: 2px solid #4caf50 !important
 }
 
 .form-control.btn.btn-lg.ideal-surport {

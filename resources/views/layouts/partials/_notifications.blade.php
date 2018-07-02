@@ -23,5 +23,11 @@
 					{!! session()->get('mail_duplicate_constraint') !!}
 				</div>
 		@endif
+
+		@if (session('status'))
+			<div class="alert alert-info">
+				{{ session('status') }}
+			</div>
+		@endif
 	</div>
 </div>

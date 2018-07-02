@@ -35,6 +35,12 @@ Route::get('/admin', function (){
 })->name('admin-controller');
 
 
+/*Surport tickets*/
+
+
+Route::get('/account/new-ticket', 'SurportController@create');
+Route::post('/account/new-ticket', 'SurportController@store');
+
 Route::resource('/admin/users', 'AdminUsersController', ['name' => 'admin-controller']);
 Route::post('/admin/users/change-password', 'AdminUsersController@changepassword', ['name' => 'admin-change-password']);
 Route::get('/admin/users/change-password', 'AdminUsersController@changepassword', ['name' => 'admin-change-password']);
